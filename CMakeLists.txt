@@ -24,3 +24,8 @@ install(
         TARGETS excserial
         DESTINATION bin
 )
+
+install(
+        FILES README.md LICENSE.txt
+        DESTINATION "/"
+)
