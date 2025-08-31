@@ -16,6 +16,8 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"
     add_compile_options("/EHc")
 endif()
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 add_executable(excserial main.cpp)
 
 install(
