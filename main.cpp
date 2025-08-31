@@ -1,9 +1,8 @@
 /**
  * @file main.cpp
- * @brief Windows serial application for sending pulse dir control data via
- * serial to Excelsior ECU.
+ * @brief Windows serial application for sending alternating messages to serial.
  *
- * Simple app that sends serial data to test pulsedir on a windows computer.
+ * Simple app that sends serial data on a windows computer.
  * Usage: excserial COM3 10 500
  * Sends 10 pulses alternating +/- with 500 Hz to COM3
  */
@@ -131,6 +130,7 @@ int main(int argc, char *argv[]) {
   dcb.StopBits = ONESTOPBIT;
   std::cout << "Serial port successfully configured!" << std::endl;
 
+  // Without this timeout is infinite
   COMMTIMEOUTS timeouts = {0};
   timeouts.ReadIntervalTimeout = 50;
   timeouts.ReadTotalTimeoutConstant = 10;
