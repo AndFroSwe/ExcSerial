@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
   }
 
-  std::cout << "Starting serial write (ctrl+c to exit)" << std::endl;
+  std::cout << "Starting excserial program..." << std::endl;
 
   // Validate the input
   int n;
@@ -103,6 +103,8 @@ int main(int argc, char *argv[]) {
   std::cout << "Serial port successfully configured!" << std::endl;
 
   // Start sending
+  std::cout << "Sending [+/-] " << n << " to " << comport << " with " <<
+    f << "Hz (" << sleep_time_ms.count() << " ms..." << std::endl;
   while (!gStopRequested) {
     std::string msg = std::format("#{},{},{},{};", n, n, n, n);
     DWORD bytesWritten = 0;
@@ -118,6 +120,8 @@ int main(int argc, char *argv[]) {
     }
     std::this_thread::sleep_for(sleep_time_ms);
   }
+
+  std::cout << "Got ctrl+c, exiting..." << std::endl;
 
   CloseHandle(hCom);
 
